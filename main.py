@@ -12,6 +12,7 @@ from google.appengine.ext import ndb
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        template = jinja_environment.get_template("templates/profile.html")
         self.response.write(template.render(template_vars)
 
 app = webapp2.WSGIApplication([
