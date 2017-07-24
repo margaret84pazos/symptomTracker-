@@ -12,7 +12,7 @@ from google.appengine.ext import ndb
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        self.response.write(template.render(template_vars)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
