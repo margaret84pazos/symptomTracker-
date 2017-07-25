@@ -1,4 +1,4 @@
 function goToProfile(){
-  window.location.replace("profile.html");
+  //window.location.replace("profile");
 }
 $('#profile').click(goToProfile)

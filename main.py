@@ -13,6 +13,7 @@ class Profile(ndb.Model):
     age = ndb.StringProperty()
     weight = ndb.StringProperty()
     symptoms = ndb.StringProperty()
+    username = ndb.StringProperty()
 
 class Symptoms(ndb.Model):
     nameSymp = ndb.StringProperty()
@@ -30,12 +31,25 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             username = user.nickname()
 
-
         login = users.create_login_url('/')
         logout = users.create_logout_url('/')
 
+        profile = Profile.query(Profile.username == username).get()
+        #if the username is already created, looks up in database by username
+        #if it isnt already there, create a profile
+            #this has users username
+        if profile is None:
+            profile = Profile(username=username)
+            profile_key = profile.put()
+        else:
+            profile_key = profile.key
+
+        #creates profile and ties it to the username
+
+
+
         template = jinja_environment.get_template("templates/home.html")
-        self.response.write(template.render( login = login, logout=logout, username=username))
+        self.response.write(template.render( login = login, logout=logout, username=username, profile_key = profile_key))
 
 
 class ProfileHandler(webapp2.RequestHandler):
@@ -43,6 +57,7 @@ class ProfileHandler(webapp2.RequestHandler):
         urlsafe_key = self.request.get('key')
 
         profile_key = ndb.Key(urlsafe=urlsafe_key)
+
         profile = profile_key.get()
 
         profile_query = Profile.query()
@@ -52,7 +67,7 @@ class ProfileHandler(webapp2.RequestHandler):
         }
 
         template = jinja_environment.get_template("templates/profile.html")
-        self.response.write(template.render(template_vars))
+        self.response.write(template.render())
 
     #def post(self):
         #1. Get the information submitted in the form.

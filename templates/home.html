@@ -5,22 +5,22 @@
   </head>
   <style>
     body {
-      background: #581845;
+      background: #D0D3D4;
       margin: 0,
     }
     h1 {
       text-align: center;
-      font-family: Tahoma, Geneva, sans-serif;
+      font-family: Raleway, Geneva, sans-serif;
 
     }
     h2 {
       text-align: center;
-      font-family: Tahoma, Geneva, sans-serif;
+      font-family: Raleway, Geneva, sans-serif;
 
     }
     button{
       color: black;
-      font-family: Tahoma, Geneva, sans-serif;
+      font-family: Raleway, Geneva, sans-serif;
       font-size: 20px;
       border-radius: 40px;
       background-color: white;
@@ -30,14 +30,14 @@
       text-align: center;
     }
     button:hover{
-      background-color: #C70039;
+      background-color: #D0D3D4;
       color: white;
     }
     header{
-      background: #C70039;
+      background: #34495E;
       padding: 10px;
       margin: 20px;
-      border: 1px solid black;
+      border: 1px solid #34495E;
       border-radius: 50px;
       box-shadow: 0 2px 20px gray;
       font-size: 30px;
@@ -48,7 +48,8 @@
   <h2>Welcome {{ username }} </h2>
   </header>
   <button><a href="{{ logout }}" class = "button">Logout</a></button>
-  <button id = "profile"><a href="profile.js"</a>Go to profile</button>
+  <button id = "profile"><a href="/profile?key={{profile_key.urlsafe()}}">Go to profile</a></button>
+
   {% else %}
   <header>
   <h1>Welcome to Symptom Tracker</h1>
@@ -58,5 +59,5 @@
   {% endif %}
   <!--Trying to make the button work.. Ask for help -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src = "templates/profile.js"></script>
+  <script src = "static/profile.js"></script>
 </html>
