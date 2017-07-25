@@ -29,7 +29,7 @@ class MainHandler(webapp2.RequestHandler):
         username = None
         if user:
             username = user.nickname()
-        
+
 
         login = users.create_login_url('/')
         logout = users.create_logout_url('/')

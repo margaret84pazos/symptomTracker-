@@ -1,20 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Symptom Tracker</title>
   </head>
-  <body>
+  <style>
+    body {
+      background: white;
+      margin: 0,
+    }
+    h1 {
+      text-align: center;
+      font-family: Tahoma, Geneva, sans-serif;
 
+    }
+    h2 {
+      text-align: center;
+      font-family: Tahoma, Geneva, sans-serif;
+
+    }
+    button{
+      color: black;
+      font-family: Tahoma, Geneva, sans-serif;
+      font-size: 20px;
+      border-radius: 40px;
+      background-color: white;
+      font-weight: bold;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      text-align: center;
+    }
+    button:hover{
+      background-color: #C70039;
+      color: white;
+    }
+    header{
+      background: #C70039;
+      padding: 10px;
+      margin: 20px;
+      border: 1px solid black;
+      border-radius: 50px;
+      box-shadow: 0 2px 20px gray;
+      font-size: 30px;
+    }
+  </style>
   {% if username %}
-  <li><a href="{{ logout }}">Logout</a></li>
-  {{ username }}
+  <header>
+  <h2>Welcome {{ username }} </h2>
+  </header>
+  <button><a href="{{ logout }}" class = "button">Logout</a></button>
+  <button id = "profile">Got to profile</button>
   {% else %}
-  <li><a href="{{ login }}">Login</a></li>
+  <header>
+  <h1>Welcome to Symptom Tracker</h1>
+  </header>
+  <h2>Please Login</h2>
+  <button><a href="{{ login }}" class = "button">Login</a></button>
   {% endif %}
-
-
-
-
-
-  </body>
+  <!--Trying to make the button work.. Ask for help -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src = "templates/profile.js"></script>
 </html>
