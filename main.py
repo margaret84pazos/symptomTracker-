@@ -4,6 +4,7 @@ import os
 
 from google.appengine.api import users
 #appengine
+
 from google.appengine.ext import ndb
 
 class Profile(ndb.Model):
@@ -23,18 +24,18 @@ jinja_environment = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        current_user = users.get_current_user()
-        logout_url = users.create_logout_url('/')
-        login_url = users.create_login_url('/')
+        user = users.get_current_user()
 
-        template_vars = {
-            'current_user': current_user,
-            'logout_url': logout_url,
-            'login_url': login_url
-        }
+        username = None
+        if user:
+            username = user.nickname()
+        
+
+        login = users.create_login_url('/')
+        logout = users.create_logout_url('/')
 
         template = jinja_environment.get_template("templates/home.html")
-        self.response.write(template.render(template_vars))
+        self.response.write(template.render( login = login, logout=logout, username=username))
 
 
 class ProfileHandler(webapp2.RequestHandler):
