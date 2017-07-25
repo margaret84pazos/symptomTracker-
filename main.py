@@ -15,8 +15,12 @@ class Profile(ndb.Model):
     symptoms = ndb.StringProperty()
     username = ndb.StringProperty()
 
-class Symptoms(ndb.Model):
+class Symptom(ndb.Model):
     nameSymp = ndb.StringProperty()
+    profile_key = ndb.KeyProperty(Profile)
+
+class Report(ndb.Model):
+    symptom_key = ndb.KeyProperty(Symptom)
     time = ndb.DateTimeProperty(auto_now_add = True)
     severity = ndb.IntegerProperty()
 
