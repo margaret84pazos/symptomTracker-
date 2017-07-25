@@ -40,6 +40,11 @@ class MainHandler(webapp2.RequestHandler):
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
+        urlsafe_key = self.request.get('key')
+
+        profile_key = ndb.Key(urlsafe=urlsafe_key)
+        profile = profile_key.get()
+
         profile_query = Profile.query()
         profileInfo = profile_query.fetch()
         template_vars = {
