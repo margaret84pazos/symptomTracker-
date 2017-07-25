@@ -73,6 +73,20 @@ class ProfileHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template("templates/profile.html")
         self.response.write(template.render())
 
+class NewSymptomHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template("templates/new_symptom.html")
+        self.response.write(template.render())
+
+    def post(self):
+        nameSymp = self.request.get('nameSymp')
+
+        symptom= Symptom(nameSymp=nameSymp)
+        symptom.put()
+
+        self.redirect('/profile')
+
+
     #def post(self):
         #1. Get the information submitted in the form.
         #name = self.request.get("name")
@@ -87,5 +101,6 @@ class ProfileHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/profile', ProfileHandler)
+    ('/profile', ProfileHandler),
+    ('/new_symptom', NewSymptomHandler)
 ], debug=True)

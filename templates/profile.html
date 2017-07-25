@@ -25,8 +25,11 @@
     </p>
     <table style="width:100%">
   <tr>
-    <th> Symptom  </th>
+    <th> Symptoms  </th>
   </tr>
+    {% for symptom in symptoms %}
+      <h6><a href="/symptom?key={{symptom.key.urlsafe()}}">{{symptom.nameSymp}}</a></h6>
+    {% endfor %}
 
     <button>Submit</button>
 </form>
