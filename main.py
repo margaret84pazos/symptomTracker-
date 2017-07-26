@@ -17,6 +17,7 @@ class Profile(ndb.Model):
 class Symptom(ndb.Model):
     nameSymp = ndb.StringProperty()
     profile_key = ndb.KeyProperty(Profile)
+    postTime = ndb.DateTimeProperty(auto_now_add=True)
 
 class Report(ndb.Model):
     symptom_key = ndb.KeyProperty(Symptom)
@@ -66,7 +67,7 @@ class ProfileHandler(webapp2.RequestHandler):
         profile = profile_key.get()
 
         profile_query = Profile.query()
-        profileInfo= profile_query.fetch().filter()
+        profileInfo= profile_query.get()
 
         template_vars = {
             'profileInfo': profileInfo
@@ -93,25 +94,32 @@ class SignUpHandler(webapp2.RequestHandler):
         self.redirect('/')
 class Symptom_ListHandler(webapp2.RequestHandler):
     def get(self):
+        current_user = users.get_current_user() #userobject
+        # Get the profile key
+        profile_query = Profile.query(Profile.username == current_user.nickname())
+        profile = profile_query.get()
+
+        symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
+        symptoms = symptom_query.fetch()
+
         template = jinja_environment.get_template("templates/symptom_list.html")
-        self.response.write(template.render())
+        self.response.write(template.render(symptoms = symptoms))
 
     def post(self):
         # Get current user
         # Get the Profile for that user from datastore
-        current_user = users.get_current_user()
-        newSymp = self.request.get('newSymp')
+        current_user = users.get_current_user() #userobject
         # Get the profile key
-        profile_key = ndb.Key(urlsafe=urlsafe_key)
-        profile = post_key.get()
+        profile_query = Profile.query(Profile.username == current_user.nickname())
+        profile = profile_query.get() #looks up all profiles matching to a nickname
 
         # Get the symptom name
+        newSymp = self.request.get('newSymp') #string you get out of a request
         # create symptom
-        nameSymp = nameSymp(message = message, email=email)
+        symptom = Symptom(nameSymp = newSymp, profile_key= profile.key)
         # put it in datastore
-        nameSymp.put()
-
-        self.redirect('/symptom_List')
+        symptom.put()
+        self.redirect('/Symptom_List')
 
 
     #def post(self):
