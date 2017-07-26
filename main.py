@@ -12,6 +12,7 @@ class Profile(ndb.Model):
     sex = ndb.StringProperty()
     age = ndb.StringProperty()
     weight = ndb.StringProperty()
+    #this will be the email
     username = ndb.StringProperty()
 
 class Symptom(ndb.Model):
@@ -34,7 +35,7 @@ class MainHandler(webapp2.RequestHandler):
         username = None
 
         if user:
-            username = user.nickname()
+            username = user.email()
             profile = Profile.query(Profile.username == username).get()
             if profile is None:
                 profile = Profile(username=username)
@@ -104,7 +105,7 @@ class Symptom_ListHandler(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user() #userobject
         # Get the profile key
-        profile_query = Profile.query(Profile.username == current_user.nickname())
+        profile_query = Profile.query(Profile.username == current_user.email())
         profile = profile_query.get()
 
         symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
@@ -118,7 +119,7 @@ class Symptom_ListHandler(webapp2.RequestHandler):
         # Get the Profile for that user from datastore
         current_user = users.get_current_user() #userobject
         # Get the profile key
-        profile_query = Profile.query(Profile.username == current_user.nickname())
+        profile_query = Profile.query(Profile.username == current_user.email())
         profile = profile_query.get() #looks up all profiles matching to a nickname
 
         # Get the symptom name

@@ -51,7 +51,7 @@
   <button><a href="{{ logout }}" class = "button">Logout</a></button>
     {% if profile != None %}
       <button id = "profile"><a href="/profile?key={{profile_key.urlsafe()}}">Go to profile</a></button>
-    {%else %}
+    {% else %}
       <button id = "signIn"><a href= "/signup">Sign Up</a></button>
     {% endif %}
 
