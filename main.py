@@ -62,8 +62,11 @@ class ProfileHandler(webapp2.RequestHandler):
         profile_key = ndb.Key(urlsafe=urlsafe_key)
         profile = profile_key.get()
 
+        profile_query = Profile.query()
+        profileInfo = profile_query.fetch()
+
         template_vars = {
-        'profile': profile
+            'profileInfo': profileInfo
         }
 
         template = jinja_environment.get_template("templates/profile.html")
