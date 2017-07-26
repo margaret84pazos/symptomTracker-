@@ -87,7 +87,7 @@ class SignUpHandler(webapp2.RequestHandler):
         self.redirect('/')
 class Symptom_ListHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_environment.get_template("templates/new_symptom.html")
+        template = jinja_environment.get_template("templates/symptom_list.html")
         self.response.write(template.render())
 
     def post(self):

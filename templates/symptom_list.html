@@ -23,3 +23,30 @@
   </body>
 </html>
   <form method="post" action="">
+
+______________________
+<!DOCTYPE html>
+<html>
+<title> Symptom!! </title>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("ol").append("<li>Appended symptom list</li>");
+    });
+});
+</script>
+</head>
+<body>
+
+<ol>
+  <li>Symptom 1</li>
+  <li>Symptom 2</li>
+  <li>Symptom 3</li>
+</ol>
+
+<button id="btn1">Add to symptom list</button>
+
+</body>
+</html>
