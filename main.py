@@ -66,7 +66,7 @@ class ProfileHandler(webapp2.RequestHandler):
         profile = profile_key.get()
 
         profile_query = Profile.query()
-        profileInfo = profile_query.fetch()
+        profileInfo= profile_query.fetch().filter()
 
         template_vars = {
             'profileInfo': profileInfo
