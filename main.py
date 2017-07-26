@@ -42,6 +42,9 @@ class MainHandler(webapp2.RequestHandler):
             else:
                 profile_key = profile.key
                 profile = Profile()
+        else:
+            profile = None
+            profile_key = None
 
         logout = users.create_logout_url('/')
         login = users.create_login_url('/')
