@@ -31,11 +31,13 @@ class MainHandler(webapp2.RequestHandler):
         user = users.get_current_user()
 
         username = None
+
         if user:
             username = user.nickname()
 
-        login = users.create_login_url('/')
+        current_user = users.get_current_user()
         logout = users.create_logout_url('/')
+        login = users.create_login_url('/')
 
         profile = Profile.query(Profile.username == username).get()
         #if the username is already created, looks up in database by username
@@ -46,13 +48,14 @@ class MainHandler(webapp2.RequestHandler):
             profile_key = profile.put()
         else:
             profile_key = profile.key
+            profile = Profile( )
 
         #creates profile and ties it to the username
 
-
+        #login = login, logout=logout, username=username, profile_key = profile_key
 
         template = jinja_environment.get_template("templates/home.html")
-        self.response.write(template.render( login = login, logout=logout, username=username, profile_key = profile_key))
+        self.response.write(template.render(login = login, logout = logout, username = username, profile_key = profile_key))
 
 
 class ProfileHandler(webapp2.RequestHandler):
