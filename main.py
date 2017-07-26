@@ -56,7 +56,35 @@ class MainHandler(webapp2.RequestHandler):
 
 
 class ProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        urlsafe_key = self.request.get('key')
 
+        profile_key = ndb.Key(urlsafe=urlsafe_key)
+        profile = profile_key.get()
+
+        template_vars = {
+        'profile': profile
+        }
+
+        template = jinja_environment.get_template("templates/profile.html")
+        self.response.write(template.render(template_vars))
+
+class SignUpHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template("templates/signup.html")
+        self.response.write(template.render())
+
+    def post(self):
+        name = self.request.get('name')
+        sex = self.request.get('sex')
+        age = self.request.get('age')
+
+        current_user = users.get_current_user()
+
+        profile = Profile(name=name, sex=sex, age=age)
+        profile.put()
+
+        self.redirect('/')
 class Symptom_ListHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template("templates/new_symptom.html")
@@ -82,5 +110,6 @@ class Symptom_ListHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/profile', ProfileHandler),
-    ('/new_symptom', NewSymptomHandler)
+    ('/signup', SignUpHandler)
+
 ], debug=True)
