@@ -10,11 +10,9 @@
     <h3>New Symptom: <input type = "text" name="newSymp"/></h3>
   </p>
   <table style="width:100%">
-<tr>
-  <th> Symptoms  </th>
-</tr>
+
   {% for symptom in symptoms %}
-    <h6>{{symptom.nameSymp}}</h6>
+  <h6>{{symptom.nameSymp}}</h6>
   {% endfor %}
 
   <button>Submit</button>
