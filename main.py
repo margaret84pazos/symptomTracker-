@@ -66,16 +66,23 @@ class MainHandler(webapp2.RequestHandler):
 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
+
         urlsafe_key = self.request.get('key')
 
-        profile_key = ndb.Key(urlsafe=urlsafe_key)
-        profile = profile_key.get()
+        if urlsafe_key == "":
+            profile = Profile(name = "", sex = "", age = "", weight = "", username = "")
+            profile_query = Profile.query()
+            profileInfo = profile_query.get()
+        else:
+            # Pulling the profile from the database
+            profile_key = ndb.Key(urlsafe=urlsafe_key)
+            profile = profile_key.get()
 
-        profile_query = Profile.query()
-        profileInfo= profile_query.get()
+            profile_query = Profile.query()
+            profileInfo = profile_query.get()
 
         template_vars = {
-            'profileInfo': profileInfo
+            'profileInfo': profileInfo,
         }
 
         template = jinja_environment.get_template("templates/profile.html")
@@ -85,13 +92,22 @@ class ProfileHandler(webapp2.RequestHandler):
         name = self.request.get('name')
         sex = self.request.get('sex')
         age = self.request.get('age')
+        weight = self.request.get('weight')
+
+        urlsafe_key = self.request.get('key')
+
 
         current_user = users.get_current_user()
 
-        profile = Profile(name=name, sex=sex, age=age)
+        profile = Profile(name=name, sex=sex, age=age, weight =  weight)
+
         profile.put()
 
-        self.redirect('/')
+        #3. Send a response.
+        url = '/profile?key=' + urlsafe_key
+        
+        self.redirect(url)
+
 class Symptom_ListHandler(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user() #userobject
