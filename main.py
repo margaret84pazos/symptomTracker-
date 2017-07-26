@@ -29,34 +29,39 @@ jinja_environment = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
 
+        user = users.get_current_user()
         username = None
 
         if user:
             username = user.nickname()
+            profile = Profile.query(Profile.username == username).get()
+            if profile is None:
+                profile = Profile(username=username)
+                profile_key = profile.put()
+            else:
+                profile_key = profile.key
+                profile = Profile()
 
-        current_user = users.get_current_user()
         logout = users.create_logout_url('/')
         login = users.create_login_url('/')
 
-        profile = Profile.query(Profile.username == username).get()
         #if the username is already created, looks up in database by username
         #if it isnt already there, create a profile
             #this has users username
-        if profile is None:
-            profile = Profile(username=username)
-            profile_key = profile.put()
-        else:
-            profile_key = profile.key
-            profile = Profile( )
 
         #creates profile and ties it to the username
-
+        template_vars = {
+            'login': login,
+            'logout': logout,
+            'username': username,
+            'profile_key': profile_key,
+            'profile': profile
+        }
         #login = login, logout=logout, username=username, profile_key = profile_key
 
         template = jinja_environment.get_template("templates/home.html")
-        self.response.write(template.render(login = login, logout = logout, username = username, profile_key = profile_key))
+        self.response.write(template.render(template_vars))
 
 
 class ProfileHandler(webapp2.RequestHandler):

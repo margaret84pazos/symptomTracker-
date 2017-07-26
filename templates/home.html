@@ -47,8 +47,13 @@
   <header>
   <h2>Welcome {{ username }} </h2>
   </header>
+
   <button><a href="{{ logout }}" class = "button">Logout</a></button>
-  <button id = "profile"><a href="/profile?key={{profile_key.urlsafe()}}">Go to profile</a></button>
+    {% if profile != None %}
+      <button id = "profile"><a href="/profile?key={{profile_key.urlsafe()}}">Go to profile</a></button>
+    {%else %}
+      <button id = "signIn"><a href= "/signup">Sign Up</a></button>
+    {% endif %}
 
   {% else %}
   <header>
