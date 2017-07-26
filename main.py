@@ -99,13 +99,18 @@ class Symptom_ListHandler(webapp2.RequestHandler):
     def post(self):
         # Get current user
         # Get the Profile for that user from datastore
-        # Get the profile key
-
         current_user = users.get_current_user()
+        newSymp = self.request.get('newSymp')
+        # Get the profile key
+        profile_key = ndb.Key(urlsafe=urlsafe_key)
+        profile = post_key.get()
 
         # Get the symptom name
         # create symptom
+        nameSymp = nameSymp(message = message, email=email)
         # put it in datastore
+        nameSymp.put()
+
         self.redirect('/symptom_List')
 
 
