@@ -12,7 +12,6 @@ class Profile(ndb.Model):
     sex = ndb.StringProperty()
     age = ndb.StringProperty()
     weight = ndb.StringProperty()
-    symptoms = ndb.StringProperty()
     username = ndb.StringProperty()
 
 class Symptom(ndb.Model):
@@ -57,32 +56,13 @@ class MainHandler(webapp2.RequestHandler):
 
 
 class ProfileHandler(webapp2.RequestHandler):
-    def get(self):
-        urlsafe_key = self.request.get('key')
 
-        profile_key = ndb.Key(urlsafe=urlsafe_key)
-
-        profile = profile_key.get()
-
-        profile_query = Profile.query()
-        profileInfo = profile_query.fetch()
-        template_vars = {
-            'profileInfo': profileInfo
-        }
-
-        template = jinja_environment.get_template("templates/profile.html")
-        self.response.write(template.render())
-
-class NewSymptomHandler(webapp2.RequestHandler):
+class Symptom_ListHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template("templates/new_symptom.html")
         self.response.write(template.render())
 
     def post(self):
-        nameSymp = self.request.get('nameSymp')
-
-        symptom= Symptom(nameSymp=nameSymp)
-        symptom.put()
 
         self.redirect('/profile')
 

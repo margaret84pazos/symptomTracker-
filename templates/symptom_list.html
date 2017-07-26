@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <p>
+    <h3>New Symptom: <input type = "text" name="nameSymp"/></h3>
+  </p>
+  <table style="width:100%">
+<tr>
+  <th> Symptoms  </th>
+</tr>
+  {% for symptom in symptoms %}
+    <h6><a href="/symptom?key={{symptom.key.urlsafe()}}">{{symptom.nameSymp}}</a></h6>
+  {% endfor %}
+
+  <button>Submit</button>
+</form>
+  <body>
+
+  </body>
+</html>
+  <form method="post" action="">
