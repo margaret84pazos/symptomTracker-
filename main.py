@@ -91,8 +91,16 @@ class Symptom_ListHandler(webapp2.RequestHandler):
         self.response.write(template.render())
 
     def post(self):
+        # Get current user
+        # Get the Profile for that user from datastore
+        # Get the profile key
 
-        self.redirect('/profile')
+        current_user = users.get_current_user()
+
+        # Get the symptom name
+        # create symptom
+        # put it in datastore
+        self.redirect('/symptom_List')
 
 
     #def post(self):
@@ -110,6 +118,7 @@ class Symptom_ListHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/profile', ProfileHandler),
-    ('/signup', SignUpHandler)
+    ('/signup', SignUpHandler),
+    ('/Symptom_List', Symptom_ListHandler)
 
 ], debug=True)
