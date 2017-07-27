@@ -6,16 +6,24 @@
     <title></title>
   </head>
 <body>
+{% for symptom in symptoms %}
+  {{symptom.nameSymp}}
+
 <form method="post" action="/Report">
   <p>
-    <input type = "text" id = "symp" name="nameSymp"/>
+    <input type="radio" name={{symptom.nameSymp}} value="1">
+    <input type="radio" name={{symptom.nameSymp}} value="2">
+    <input type="radio" name={{symptom.nameSymp}} value="3">
+    <input type="radio" name={{symptom.nameSymp}} value="4">
+    <input type="radio" name={{symptom.nameSymp}} value="5">
+    <input type="radio" name={{symptom.nameSymp}} value="6">
+    <input type="radio" name={{symptom.nameSymp}} value="7">
+    <input type="radio" name={{symptom.nameSymp}} value="8">
+    <input type="radio" name={{symptom.nameSymp}} value="9">
+    <input type="radio" name={{symptom.nameSymp}} value="10">
   </p>
-  <h3>Symptoms</h3>
-  <table style="width:100%">
 
-  {% for  %}
-  <li>{{symptom.nameSymp}}</li>
-  <br>
+
   {% endfor %}
 
   <button>Submit</button>
