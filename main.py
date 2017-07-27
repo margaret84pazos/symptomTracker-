@@ -164,7 +164,7 @@ class ReportHandler(webapp2.RequestHandler):
         reports = report_query.fetch()
 
         template = jinja_environment.get_template("templates/report.html")
-        self.response.write(template.render())
+        self.response.write(template.render(reports = reports))
     def post(self):
         current_user = users.get_current_user()
 

@@ -1,38 +1,25 @@
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" type = "text/css" href= "/stylesheets/symptom_list.css"/>
   <head>
     <meta charset="utf-8">
-    <title> Daily Report </title>
-    <form method="post" action="/Report">
-      <p>
-        <h3> <input type = "text" name="newSymp"/></h3>
-      </p>
-    </form>
+    <title></title>
   </head>
-  <body>
-    {% for report in reports %}
+<body>
+<form method="post" action="/Report">
+  <p>
+    <input type = "text" id = "symp" name="nameSymp"/>
+  </p>
+  <h3>Symptoms</h3>
+  <table style="width:100%">
 
-    <div id= "date">
-      {{report.time.strftime("%d %B")}}
-    </div>
+  {% for  %}
+  <li>{{symptom.nameSymp}}</li>
+  <br>
+  {% endfor %}
 
-    <div class="symptoms">
+  <button>Submit</button>
 
-
-      {% for symptom in symptoms %}
-
-    <div id="severity">
-
-    <button id="btn1" class="severity-btn"> </button>
-
-    <button id="btn2" class="severity-btn"> </button>
-
-    <button id="btn3" class="severity-btn"> </button>
-
-    <div id="symptom-text"{{symptom.nameSymp}}></div>
-    {% endfor %}
-    {% endfor %}
-
-
-  </body>
-</html>
+</form>
+</body>
+</Html>
