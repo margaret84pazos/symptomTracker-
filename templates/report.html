@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Daily Report </title>
+    <form method="post" action="/Report">
+      <p>
+        <h3> <input type = "text" name="newSymp"/></h3>
+      </p>
+    </form>
+  </head>
+  <body>
+    {% for report in reports %}
+
+    <div id= "date">
+      {{report.time.strftime("%d %B")}}
+    </div>
+
+    <div class="symptoms">
+
+
+      {% for symptom in symptoms %}
+
+    <div id="severity">
+
+    <button id="btn1" class="severity-btn"> </button>
+
+    <button id="btn2" class="severity-btn"> </button>
+
+    <button id="btn3" class="severity-btn"> </button>
+
+    <div id="symptom-text"{{symptom.nameSymp}}></div>
+    {% endfor %}
+    {% endfor %}
+
+
+  </body>
+</html>
