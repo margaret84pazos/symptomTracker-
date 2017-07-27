@@ -8,7 +8,8 @@
 <body>
 <form method="post" action="/Symptom_List">
   <p>
-    <h3>New Symptom: <input type = "text" id = "symp" name="newSymp"/></h3>
+    <h3>New Symptom:</h3>
+      <h3> <input type = "text" id = "symp" name="newSymp"/></h3>
   </p>
   <h3>Symptoms</h3>
   <table style="width:100%">
@@ -18,7 +19,12 @@
   <br>
   {% endfor %}
 
-  <button>Submit</button>
+  <button id = "submit">Submit</button>
+
 </form>
+<br>
+<br>
+<br>
+<button id = "mainPage"><a href="/" class = "button">Go To Home</a></button><br>
 </body>
 </Html>
