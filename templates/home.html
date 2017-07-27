@@ -49,10 +49,11 @@
   </header>
 
   <button><a href="{{ logout }}" class = "button">Logout</a></button>
-    {% if profile != None %}
+    {% if profile_key != None %}
       <button id = "profile"><a href="/profile?key={{profile_key.urlsafe()}}">Go to profile</a></button>
-    {% else %}
-      <button id = "signIn"><a href= "/signup">Sign Up</a></button>
+      <!-- buttons to other p-->
+      {% else %}
+      <button id = "profile"><a href="/profile">Create Your Profile</a></button>
     {% endif %}
 
   {% else %}

@@ -39,13 +39,10 @@ class MainHandler(webapp2.RequestHandler):
             username = user.email()
             profile = Profile.query(Profile.username == username).get()
             if profile is None:
-                profile = Profile(username=username)
-                profile_key = profile.put()
+                profile_key = None
             else:
                 profile_key = profile.key
-                profile = Profile()
         else:
-            profile = None
             profile_key = None
 
         logout = users.create_logout_url('/')
@@ -60,8 +57,7 @@ class MainHandler(webapp2.RequestHandler):
             'login': login,
             'logout': logout,
             'username': username,
-            'profile_key': profile_key,
-            'profile': profile
+            'profile_key': profile_key
         }
         #login = login, logout=logout, username=username, profile_key = profile_key
 
@@ -85,11 +81,6 @@ class ProfileHandler(webapp2.RequestHandler):
 
         template = jinja_environment.get_template("templates/profile.html")
         self.response.write(template.render(template_vars))
-
-class SignUpHandler(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_environment.get_template("templates/signup.html")
-        self.response.write(template.render())
 
     def post(self):
         name = self.request.get('name')
