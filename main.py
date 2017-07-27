@@ -24,6 +24,7 @@ class Report(ndb.Model):
     symptom_key = ndb.KeyProperty(Symptom)
     time = ndb.DateTimeProperty(auto_now_add = True)
     severity = ndb.IntegerProperty()
+    profile_key = ndb.KeyProperty(Profile)
 
 jinja_environment = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -142,11 +143,34 @@ class Symptom_ListHandler(webapp2.RequestHandler):
         #profile = Profile(name =  name, sex = sex, age = age, weight = weight, #symptoms = symptoms)
 
         #profile.put()
+class ReportHandler(webapp2.RequestHandler):
+    def get(self):
+        current_user = users.get_current_user() #userobject
+        # Get the profile key
+        profile_query = Profile.query(Profile.username == current_user.email())
+        profile = profile_query.get()
+        #symptom key
+        symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
+        symptoms = symptom_query.fetch()
+
+        report_query = Report.query(Report.profile_key == profile.key).order(-Report.time)
+        reports = report_query.fetch()
+
+        template = jinja_environment.get_template("templates/report.html")
+        self.response.write(template.render())
+    def post(self):
+        current_user = users.get_current_user()
+
+        profile_query = Profile.query(Profile.username == current_user.email())
+        profile = profile_query.get()
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/profile', ProfileHandler),
     ('/signup', SignUpHandler),
-    ('/Symptom_List', Symptom_ListHandler)
+    ('/Symptom_List', Symptom_ListHandler),
+    ('/Report', ReportHandler)
+
 
 ], debug=True)
