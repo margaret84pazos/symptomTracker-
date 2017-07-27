@@ -171,14 +171,50 @@ class ReportHandler(webapp2.RequestHandler):
             # and create a new report in datastore
                 report = Report(severity = int(severity), profile_key = profile.key, symptom_key = symptom.key)
                 report.put()
-
         self.redirect('/Report')
+class ChartHandler(webapp2.RequestHandler):
+    def get(self):
+            template = jinja_environment.get_template("templates/charts.html")
+            points = "['Dates,' 'Severity']"
+            template_vars = {
+            'points': points
+            }
+
+            self.response.write(template.render(template_vars))
+        # symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
+        # symptoms = symptom_query.fetch()
+        #
+        # symptom_key = self.request.get('key')
+        # symptom = ndb.Key(urlsafe=symptom_key)
+        #
+        # reports = Report.query().filter(Report.symptom_key == symptom_key)
+        #
+        # template_vars = {
+        #     'symptom_key'=symptom_key,
+        #     'profile_key'= profile_key,
+        #
+        # }
+        # 1. Read info from db
+        # 2. write info as string
+        # 3. Build data as js array
+        # 4. Add array to template
+        # ['Date', 'Severity']
+        #     ['2004',  6],
+        #     ['2005',  9],
+        #     ['2006',  2],
+        #     ['2007',  6]
+
+
+
+    #def post(self):
+
+
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/profile', ProfileHandler),
     ('/Symptom_List', Symptom_ListHandler),
-    ('/Report', ReportHandler)
-
-
+    ('/Report', ReportHandler),
+    ('/charts', ChartHandler)
 ], debug=True)
