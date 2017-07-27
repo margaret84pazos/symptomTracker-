@@ -175,7 +175,6 @@ class ReportHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/profile', ProfileHandler),
-    ('/signup', SignUpHandler),
     ('/Symptom_List', Symptom_ListHandler),
     ('/Report', ReportHandler)
 
