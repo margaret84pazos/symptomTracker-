@@ -4,9 +4,12 @@
   <link rel="stylesheet" type = "text/css" href= "/stylesheets/report.css"/>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Daily Report</title>
   </head>
 <body>
+<div> <h1> On a Scale of 1-10, how are your symptoms today? </h2> </div>
+  <br> <br> 
+<div>
 {% for symptom in symptoms %}
   {{symptom.nameSymp}}
 
@@ -27,8 +30,9 @@
 
   {% endfor %}
 
-  <button>Submit</button>
 
+  <button>Submit</button>
+</div>
 </form>
 </body>
 </Html>

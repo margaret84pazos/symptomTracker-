@@ -1,10 +1,44 @@
-@import
-url('https://fonts.googleapis.com/css?family=Dax:400,900');
+body {
+      animation: myfirst 50s; /* animation-name followed by duration in seconds*/
+         /* you could also use milliseconds (ms) or something like 2.5s */
+      -webkit-animation:myfirst 20s infinite;  /* Chrome and Safari */
+    }
+
+    @-webkit-keyframes myfirst /* Safari and Chrome - necessary duplicate */
+    {
+      0% {background: #D6DBDF;}
+      10% {background: #85929E;}
+      20% {background: #AEB6BF;}
+      30% {background: #85929E;}
+      40% {background: #5D6D7E;}
+      50% {background: #34495E;}
+      60% {background: #5D6D7E;}
+      70% {background: #85929E;}
+      80% {background: #AEB6BF;}
+      90% {background: #D6DBDF;}
+      100% {background: #EBEDEF;}
+}
+div {
+  text-align: center;
+  font-family: Raleway, Geneva, sans-serif;
+  font-weight: 400;
+  font-size: 200%;
+}
+
+button {
+  color: black;
+}
+
+
+
+
+/*@import
+/*url('https://fonts.googleapis.com/css?family=Dax:400,900');
 $font: 'Dax',
 sans-serif;
 /* $white: #fffff;
 $green: #007e90; */
-html {
+/*html {
   background-color: pink;
   overflow: hidden;
 }
