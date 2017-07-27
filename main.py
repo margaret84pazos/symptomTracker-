@@ -1,6 +1,7 @@
 import webapp2
 import jinja2
 import os
+import logging #going to let you log certain things to the console. useful for debugging
 
 from google.appengine.api import users
 #appengine
@@ -131,7 +132,7 @@ class Symptom_ListHandler(webapp2.RequestHandler):
         current_user = users.get_current_user() #userobject
         # Get the profile key
         profile_query = Profile.query(Profile.username == current_user.email())
-        profile = profile_query.get() #looks up all profiles matching to a nickname
+        profile = profile_query.get() #looks up all profiles matching to an email
 
         # Get the symptom name
         newSymp = self.request.get('newSymp') #string you get out of a request
@@ -151,33 +152,25 @@ class ReportHandler(webapp2.RequestHandler):
         symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
         symptoms = symptom_query.fetch()
 
-        report_query = Report.query(Report.profile_key == profile.key).order(-Report.time)
-        reports = report_query.fetch()
-
         template = jinja_environment.get_template("templates/report.html")
-        self.response.write(template.render(reports = reports))
+        self.response.write(template.render(symptoms=symptoms))
     def post(self):
-
         current_user = users.get_current_user()
-
         profile_query = Profile.query(Profile.username == current_user.email())
         profile = profile_query.get()
 
-        severity = self.request.get('severity')
-        comment = self.request.get('comment')
-        urlsafe_key = self.request.get('profile_key')
-        urlsafe_key1 = self.request.get('symptom_key')
-
-        profile_key = ndb.Key(urlsafe = urlsafe_key)
-        #we don't need this, just demonstrating that we are following the order
-        profile = profile_key.get()
-
-        symptom_key = ndb.Key(urlsafe = urlsafe_key1)
-        symptom = symptom_key.get()
-
-        report = Report(severity=severity, comment = comment, profile_key = profile_key, symptom_key = symptom_key)
-
-        report.put()
+        # Get the list of symptoms for this users
+        symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
+        symptoms = symptom_query.fetch()
+        # For each symptom, look up the severity
+        #for symptom,severity in self.request()
+        for symptom in symptoms:
+            severity = self.request.get(symptom.nameSymp)
+            logging.info (symptom.nameSymp + " is " + severity)
+            if severity != "":
+            # and create a new report in datastore
+                report = Report(severity = int(severity), profile_key = profile.key, symptom_key = symptom.key)
+                report.put()
 
         self.redirect('/Report')
 
