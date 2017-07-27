@@ -21,10 +21,11 @@ class Symptom(ndb.Model):
     postTime = ndb.DateTimeProperty(auto_now_add=True)
 
 class Report(ndb.Model):
-    symptom_key = ndb.KeyProperty(Symptom)
+    symptom_key = ndb.KeyProperty(kind = Symptom)
     time = ndb.DateTimeProperty(auto_now_add = True)
     severity = ndb.IntegerProperty()
-    profile_key = ndb.KeyProperty(Profile)
+    profile_key = ndb.KeyProperty(kind = Profile)
+    comment = ndb.StringProperty()
 
 jinja_environment = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -113,8 +114,10 @@ class Symptom_ListHandler(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user() #userobject
         # Get the profile key
+
         profile_query = Profile.query(Profile.username == current_user.email())
         profile = profile_query.get()
+
 
         symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
         symptoms = symptom_query.fetch()
@@ -138,18 +141,6 @@ class Symptom_ListHandler(webapp2.RequestHandler):
         symptom.put()
         self.redirect('/Symptom_List')
 
-
-    #def post(self):
-        #1. Get the information submitted in the form.
-        #name = self.request.get("name")
-        #sex = self.request.get("sex")
-        #age = self.request.get("age")
-        #weight = self.request.get("weight")
-        #symptoms = self.request.get("symptoms")
-
-        #profile = Profile(name =  name, sex = sex, age = age, weight = weight, #symptoms = symptoms)
-
-        #profile.put()
 class ReportHandler(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user() #userobject
@@ -166,11 +157,29 @@ class ReportHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template("templates/report.html")
         self.response.write(template.render(reports = reports))
     def post(self):
+
         current_user = users.get_current_user()
 
         profile_query = Profile.query(Profile.username == current_user.email())
         profile = profile_query.get()
 
+        severity = self.request.get('severity')
+        comment = self.request.get('comment')
+        urlsafe_key = self.request.get('profile_key')
+        urlsafe_key1 = self.request.get('symptom_key')
+
+        profile_key = ndb.Key(urlsafe = urlsafe_key)
+        #we don't need this, just demonstrating that we are following the order
+        profile = profile_key.get()
+
+        symptom_key = ndb.Key(urlsafe = urlsafe_key1)
+        symptom = symptom_key.get()
+
+        report = Report(severity=severity, comment = comment, profile_key = profile_key, symptom_key = symptom_key)
+
+        report.put()
+
+        self.redirect('/Report')
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
