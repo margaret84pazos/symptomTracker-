@@ -70,6 +70,62 @@ li{
 
 #submit:hover:before{transform: scaleX(1);}
 
+#report{
+  color: black;
+
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  margin-left: 560px;
+  border: 2px solid black;
+
+  display:inline-block;
+  position: absolute;
+  cursor:pointer;
+  background:white;  color:black;
+  z-index:0;
+}
+
+#report:before {
+  content: "";
+  position: absolute;
+  z-index:-1;
+  top: 0;  left: 0;  right: 0;  bottom: 0;
+  background: #979A9A;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .3s ease-out;
+}
+
+#report:hover:before{transform: scaleX(1);}
+
+#chart{
+  color: black;
+
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  margin-left: 610px;
+  border: 2px solid black;
+
+  display:inline-block;
+  position: absolute;
+  cursor:pointer;
+  background:white;  color:black;
+  z-index:0;
+}
+
+#chart:before {
+  content: "";
+  position: absolute;
+  z-index:-1;
+  top: 0;  left: 0;  right: 0;  bottom: 0;
+  background: #979A9A;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .3s ease-out;
+}
+
+#chart:hover:before{transform: scaleX(1);}
+
 #mainPage{
   color: black;
 
