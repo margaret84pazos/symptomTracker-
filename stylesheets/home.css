@@ -1,0 +1,80 @@
+
+h1 {
+  text-align: center;
+  font-family: Raleway, Geneva, sans-serif;
+  color: white;
+  font-weight: 900;
+  text-shadow: 0 2px 20px black;
+  font-size: 450%;
+
+}
+h2 {
+  text-align: center;
+  font-family: Raleway, Geneva, sans-serif;
+  color: white;
+  font-size: 450%;
+  font-weight: 900;
+  text-shadow: 0 2px 30px black;
+
+}
+h3{
+  text-align: center;
+  font-family: Raleway, Geneva, sans-serif;
+  color: black;
+  font-size: 400%;
+  font-weight: 900;
+  text-shadow: 0 2px 20px white;
+}
+#profile{
+  color: black;
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  border-radius: 5px;
+  background-color: #99A3A4;
+  font-weight: bold;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 15px 50px black;
+  margin-left: 615px
+}
+#logout{
+  color: black;
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  border-radius: 5px;
+  background-color: #99A3A4;
+  font-weight: bold;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 15px 50px black;
+  margin-left: 650px
+}
+#login{
+  color: black;
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  border-radius: 5px;
+  background-color: #99A3A4;
+  font-weight: bold;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 15px 50px black;
+  margin-left: 650px
+}
+
+#symptoms{
+  color: black;
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  border-radius: 5px;
+  background-color: #99A3A4;
+  font-weight: bold;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 15px 50px black;
+  margin-left: 630px
+}
+button:hover{
+  background-color: #7F8C8D;
+  color: white;
+}

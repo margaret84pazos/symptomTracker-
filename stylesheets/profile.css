@@ -1,0 +1,70 @@
+body {
+      animation: myfirst 50s; /* animation-name followed by duration in seconds*/
+         /* you could also use milliseconds (ms) or something like 2.5s */
+      -webkit-animation:myfirst 20s infinite;  /* Chrome and Safari */
+    }
+
+    @-webkit-keyframes myfirst /* Safari and Chrome - necessary duplicate */
+    {
+      0% {background: #1F618D;}
+      10% {background: #2980B9;}
+      20% {background: #3498DB;}
+      30% {background: #5DADE2;}
+      40% {background: #5499C7;}
+      50% {background: #2980B9;}
+      60% {background: #2E86C1;}
+      70% {background: #5DADE2;}
+      80% {background: #5499C7;}
+      90% {background: #5499C7;}
+      100% {background: #1F618D;}
+}
+
+h1 {
+  text-align: center;
+  font-family: Raleway, Geneva, sans-serif;
+  color: black;
+  font-weight: 900;
+  text-shadow: 0 2px 20px grey;
+  font-size: 450%;
+
+}
+h3 {
+  text-align: center;
+  font-family: Raleway, Geneva, sans-serif;
+  color: black;
+  font-weight: 900;
+  text-shadow: 0 2px 20px grey;
+  font-size: 200%;
+
+}
+
+#qa  {
+  width: 110px; height: 20px; border: 1px solid #999999; padding: 5px;
+  font-size: 40%;
+}
+
+div {
+  text-align: center;
+  font-family: Raleway, Geneva, sans-serif;
+  color: black;
+  font-weight: 900;
+  text-shadow: 0 2px 20px grey;
+  font-size: 200%;
+}
+
+button{
+  color: black;
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  border-radius: 5px;
+  background-color: #99A3A4;
+  font-weight: bold;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 15px 50px black;
+  margin-left: 650px
+}
+button:hover{
+  background-color: #7F8C8D;
+  color: white;
+}

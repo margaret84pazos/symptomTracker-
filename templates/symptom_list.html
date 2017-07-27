@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" type = "text/css" href= "/stylesheets/symptom_list.css"/>
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -7,12 +8,14 @@
 <body>
 <form method="post" action="/Symptom_List">
   <p>
-    <h3>New Symptom: <input type = "text" name="newSymp"/></h3>
+    <h3>New Symptom: <input type = "text" id = "symp" name="newSymp"/></h3>
   </p>
+  <h3>Symptoms</h3>
   <table style="width:100%">
 
   {% for symptom in symptoms %}
-  <h4>{{symptom.nameSymp}}</h4>
+  <li>{{symptom.nameSymp}}</li>
+  <br>
   {% endfor %}
 
   <button>Submit</button>

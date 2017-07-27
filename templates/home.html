@@ -1,46 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type = "text/css" href= "/stylesheets/home.css"/>
     <title>Symptom Tracker</title>
   </head>
   <style>
     body {
       background: #D0D3D4;
-      margin: 0,
-    }
-    h1 {
-      text-align: center;
-      font-family: Raleway, Geneva, sans-serif;
-
-    }
-    h2 {
-      text-align: center;
-      font-family: Raleway, Geneva, sans-serif;
-
-    }
-    button{
-      color: black;
-      font-family: Raleway, Geneva, sans-serif;
-      font-size: 20px;
-      border-radius: 40px;
-      background-color: white;
-      font-weight: bold;
-      -webkit-transition-duration: 0.4s; /* Safari */
-      transition-duration: 0.4s;
-      text-align: center;
-    }
-    button:hover{
-      background-color: #D0D3D4;
-      color: white;
-    }
-    header{
-      background: #34495E;
-      padding: 10px;
-      margin: 20px;
-      border: 1px solid #34495E;
-      border-radius: 50px;
-      box-shadow: 0 2px 20px gray;
-      font-size: 30px;
+      margin: 0;
+      background-image: url("images/background.jpg");
+      background-size: 1500px 900px
     }
   </style>
   {% if username %}
@@ -48,11 +17,15 @@
   <h2>Welcome {{ username }} </h2>
   </header>
 
-  <button><a href="{{ logout }}" class = "button">Logout</a></button>
+  <button id = "logout"><a href="{{ logout }}" class = "button">Logout</a></button><br>
+  <br>
     {% if profile_key != None %}
 
       <button id = "profile"><a href="/profile?key={{profile_key.urlsafe()}}">Go to profile</a></button>
+      <br>
+      <br>
       <!-- buttons to other p-->
+      <button id = "symptoms"><a href = "/Symptom_List">Symptoms</a></button>
       {% else %}
       <button id = "profile"><a href="/profile">Create Your Profile</a></button>
     {% endif %}
@@ -61,8 +34,8 @@
   <header>
   <h1>Welcome to Symptom Tracker</h1>
   </header>
-  <h2>Please Login</h2>
-  <button><a href="{{ login }}" class = "button">Login</a></button>
+  <h3>Please Login</h3>
+  <button id = "login"><a href="{{ login }}" class = "button">Login</a></button>
   {% endif %}
   <!--Trying to make the button work.. Ask for help -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
