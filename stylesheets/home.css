@@ -1,4 +1,101 @@
+/*Creating infinte animation in which is rotating*/
+div {
+  animation: rotate-all 2s 0 infinite linear alternate;
+}
+/*First dive will go from circle to square, setting color*
+Setting up the name which will be circle and circle1 of anination
+cubic-bezier(x1, y1, x2, y2) --- sets the location f*/
+.div1 {
+  width: 80px;
+  height: 80px;
+  background-color: #1334BF;
+  position: relative;
+  margin: auto;
+  animation: circle 2.5s .5s infinite cubic-bezier(1,.015,.295,1.225) alternate-reverse;
+}
 
+.div2 {
+  width: 80px;
+  height: 80px;
+  background-color: #1334BF;
+  position: relative;
+  margin: auto;
+  animation: circle1 2.5s .42s infinite cubic-bezier(1,.015,.295,1.225) alternate-reverse;
+}
+
+#one {
+  top: 150px;
+}
+
+#two {
+  top: 150px;
+  right: 80px;
+}
+
+#three {
+  top: 150px;
+}
+
+#four {
+  bottom: 10px;
+  left: 80px;
+}
+
+@keyframes circle {
+  0%  {
+    border-radius:0 0 0 0;
+    background: #A513BF;
+    transform:rotate(45deg);
+  }
+  25%  {
+    border-radius:50% 0 0 0;
+    background: #FF0901;
+    transform:rotate(135deg);
+  }
+  50%  {
+    border-radius: 200% 0 0 0;
+    background: #0E58D0;
+    transform:rotate(180deg);
+  }
+  75%  {
+    border-radius:50% 50% 50% 0;
+    background: #FDFF01;
+    transform:rotate(315deg);
+  }
+  100% {
+    border-radius:50%;
+    background: #2DBF13;
+    transform:rotate(404deg);
+  }
+}
+
+@keyframes circle1 {
+  0%  {
+    border-radius:0 0 0 0;
+    background:#A513BF;
+    transform:rotate(45deg);
+  }
+  25%  {
+    border-radius:0 0 50% 0;
+    background: #FF0901;
+    transform:rotate(135deg);
+  }
+  50%  {
+    border-radius:200% 0 0 0;
+    background: #0E58D0;
+    transform:rotate(180deg);
+  }
+  75%  {
+    border-radius:50% 0 50% 50%;
+    background: #FDFF01;
+    transform:rotate(315deg);
+  }
+  100% {
+    border-radius:50%;
+    background: #2DBF13;
+    transform:rotate(404deg);
+  }
+}
 h1 {
   text-align: center;
   font-family: Raleway, Geneva, sans-serif;
@@ -74,6 +171,7 @@ h3{
   box-shadow: 0 15px 50px black;
   margin-left: 630px
 }
+
 button:hover{
   background-color: #7F8C8D;
   color: white;

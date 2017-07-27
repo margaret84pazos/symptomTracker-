@@ -8,12 +8,20 @@
     body {
       background: #D0D3D4;
       margin: 0;
-      background-image: url("images/background.jpg");
+      background-color: black;
+      /*background-image: url("images/background.jpg");*/
       background-size: 1500px 900px
     }
   </style>
+
+  <div class="div1" id="one"></div>
+  <div class="div1" id="two"></div>
+  <div class="div2" id="three"></div>
+  <div class="div2" id="four"></div>
+
   {% if username %}
   <header>
+    <br>
   <h2>Welcome {{ username }} </h2>
   </header>
 
@@ -32,6 +40,7 @@
 
   {% else %}
   <header>
+    <br>
   <h1>Welcome to Symptom Tracker</h1>
   </header>
   <h3>Please Login</h3>
