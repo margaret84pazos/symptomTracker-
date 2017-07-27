@@ -27,9 +27,11 @@
 
   <button id = "logout"><a href="{{ logout }}" class = "button">Logout</a></button><br>
   <br>
+  <br>
     {% if profile_key != None %}
 
       <button id = "profile"><a href="/profile?key={{profile_key.urlsafe()}}">Go to profile</a></button>
+      <br>
       <br>
       <br>
       <!-- buttons to other p-->
@@ -43,7 +45,6 @@
     <br>
   <h1>Welcome to Symptom Tracker</h1>
   </header>
-  <h3>Please Login</h3>
   <button id = "login"><a href="{{ login }}" class = "button">Login</a></button>
   {% endif %}
   <!--Trying to make the button work.. Ask for help -->

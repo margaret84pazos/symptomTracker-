@@ -42,20 +42,61 @@ li{
   text-shadow: 0 2px 20px white;
 }
 
-button{
-    color: black;
-    font-family: Raleway, Geneva, sans-serif;
-    font-size: 30px;
-    border-radius: 5px;
-    background-color: #99A3A4;
-    font-weight: bold;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    box-shadow: 0 15px 50px black;
-    margin-left: 650px
+#submit{
+  color: black;
+
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  margin-left: 650px;
+  border: 2px solid black;
+
+  display:inline-block;
+  position: absolute;
+  cursor:pointer;
+  background:white;  color:black;
+  z-index:0;
 }
 
-button:hover{
-    background-color: #7F8C8D;
-    color: white;
-  }
+#submit:before {
+  content: "";
+  position: absolute;
+  z-index:-1;
+  top: 0;  left: 0;  right: 0;  bottom: 0;
+  background: #979A9A;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .3s ease-out;
+}
+
+#submit:hover:before{transform: scaleX(1);}
+
+#mainPage{
+  color: black;
+
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  margin-left: 610px;
+  border: 2px solid black;
+
+  display:inline-block;
+  position: absolute;
+  cursor:pointer;
+  background:white;  color:black;
+  z-index:0;
+}
+
+#mainPage:before {
+  content: "";
+  position: absolute;
+  z-index:-1;
+  top: 0;  left: 0;  right: 0;  bottom: 0;
+  background: #979A9A;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .3s ease-out;
+}
+
+#mainPage:hover:before{transform: scaleX(1);}
+a{
+  text-decoration: none;
+}
