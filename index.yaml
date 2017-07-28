@@ -16,6 +16,17 @@ indexes:
   - name: time
     direction: desc
 
+- kind: Report
+  properties:
+  - name: symptom_key
+  - name: time
+
+- kind: Report
+  properties:
+  - name: symptom_key
+  - name: time
+    direction: desc
+
 - kind: Symptom
   properties:
   - name: profile_key

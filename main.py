@@ -183,7 +183,7 @@ class ChartHandler(webapp2.RequestHandler):
             symptom_key = self.request.get('key')
             symptom = ndb.Key(urlsafe=symptom_key)
 
-            reports = Report.query().filter(Report.symptom_key == symptom).fetch()
+            reports = Report.query().filter(Report.symptom_key == symptom).order(Report.time).fetch()
 
             for report in reports:
                 points = points + '[' + '\''   + str(report.time.strftime('%b %d')) +  '\',' + str(report.severity) +'],'
