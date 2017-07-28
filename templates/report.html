@@ -33,9 +33,13 @@
 
 
   {% endfor %}
-
+  <script>
+  function submitted() {
+      alert("Go back to the Symptom List and click on a symptom to see Charts!");
+  }
+  </script>
 </div>
-  <button id = "submit">Submit</button>
+  <button onclick="submitted()" id = "submit">Submit</button>
 </form>
 <button id = "profile"><a href="/Symptom_List" class = "button">Go Back</a></button>
 </body>

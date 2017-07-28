@@ -23,7 +23,7 @@
 <form method="post" action="/Symptom_List">
   <p>
     <h3>New Symptom:</h3>
-      <h3> <input type = "text" id = "symp" name="newSymp"/></h3>
+       <h3><input type = "text" id = "symp" name="newSymp"/></h3>
   </p>
   <h3>Symptoms</h3>
   <table style="width:100%">
@@ -33,12 +33,13 @@
   <br>
   {% endfor %}
 
-  <button onclick="submitted()" id = "submit">Submit</button>
   <script>
   function submitted() {
-      alert("Add severity level, then look at your charts by clicking your symptom!");
+      alert("You've added a symptom, now track it in the Daily Health Report!");
   }
+
   </script>
+    <button onclick="submitted()" id = "submit">Submit</button>
 
 </form>
 <br>
