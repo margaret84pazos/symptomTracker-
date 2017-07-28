@@ -16,11 +16,11 @@ body {
 }
 
 .a,.c,.e,.g,.i {
-  animation: rotate1 1s ease-in-out alternate infinite;
+  animation: rotate1 5s ease-in-out alternate infinite;
 }
 
 .b,.d,.f,.h,.j {
-  animation: rotate2 1s ease-in-out alternate infinite;
+  animation: rotate2 5s ease-in-out alternate infinite;
   transform: rotate(90deg);
 }
 
@@ -81,7 +81,7 @@ button{
 
   font-family: Raleway, Geneva, sans-serif;
   font-size: 30px;
-  margin-left: 643px;
+  margin-left: 45%;
   border: 2px solid black;
 
   display:inline-block;

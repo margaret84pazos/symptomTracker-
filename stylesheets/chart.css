@@ -1,10 +1,58 @@
+body {
+	background: black;
+}
+.scene {
+	width: 600px;
+	height: 60px;
+	margin: 100px auto;
+}
+
+.circle {
+	width: 60px;
+	height: 60px;
+	border-top-right-radius: 60px;
+	float: left;
+	transform-origin: bottom left;
+}
+
+.a,.c,.e,.g,.i {
+  animation: rotate1 5s ease-in-out alternate infinite;
+}
+
+.b,.d,.f,.h,.j {
+  animation: rotate2 5s ease-in-out alternate infinite;
+  transform: rotate(90deg);
+}
+
+.a {background: #A513BF;}
+.b {background: #A513BF;}
+.c {background: #FF0901;}
+.d {background: #FF0901;}
+.e {background: #0E58D0;}
+.f {background: #0E58D0;}
+.g {background: #FDFF01;}
+.h {background: #FDFF01;}
+.i {background: #2DBF13;}
+.j {background: #2DBF13;}
+
+@keyframes rotate1 {
+	100% {transform: rotate(-360deg);}
+}
+
+@keyframes rotate2 {
+	100% {transform: rotate(450deg);}
+}
+#curve_chart{
+  margin: auto;
+  margin-bottom: 2%;
+}
 #goToSym{
   color: black;
 
   font-family: Raleway, Geneva, sans-serif;
   font-size: 30px;
-  margin-left: 560px;
-  border: 2px solid white;
+  margin-left: 37%;
+  border: 2px solid black;
 
   display:inline-block;
   position: absolute;
