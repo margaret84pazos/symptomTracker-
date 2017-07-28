@@ -1,0 +1,32 @@
+#goToSym{
+  color: black;
+
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  margin-left: 560px;
+  border: 2px solid white;
+
+  display:inline-block;
+  position: absolute;
+  cursor:pointer;
+  background:white;  color:black;
+  z-index:0;
+}
+
+#goToSym:before {
+  content: "";
+  position: absolute;
+  z-index:-1;
+  top: 0;  left: 0;  right: 0;  bottom: 0;
+  background: #1E88E5;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .3s ease-out;
+}
+
+#goToSym:hover:before{transform: scaleX(1);}
+
+a{
+  text-decoration: none;
+  color: black;
+}
