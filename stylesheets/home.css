@@ -150,6 +150,34 @@ h3{
 
 #profile:hover:before{transform: scaleX(1);}
 
+#profile1{
+  color: black;
+
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  margin-left: 595px;
+  border: 2px solid black;
+
+  display:inline-block;
+  position: absolute;
+  cursor:pointer;
+  background:white;  color:white;
+  z-index:0;
+}
+
+#profile1:before {
+  content: "";
+  position: absolute;
+  z-index:-1;
+  top: 0;  left: 0;  right: 0;  bottom: 0;
+  background: #FDFF01;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .3s ease-out;
+}
+
+#profile1:hover:before{transform: scaleX(1);}
+
 #login{
   color: black;
 

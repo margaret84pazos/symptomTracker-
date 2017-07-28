@@ -6,9 +6,13 @@
     <meta charset="utf-8">
     <title>Daily Report</title>
   </head>
+  </style>
+  </head>
+  <body>
+
 <body>
 <div> <h1> On a Scale of 1-10, how are your symptoms today? </h2> </div>
-  <br> <br> 
+  <br> <br>
 <div>
 {% for symptom in symptoms %}
   {{symptom.nameSymp}}
@@ -30,9 +34,9 @@
 
   {% endfor %}
 
-
-  <button>Submit</button>
 </div>
+  <button id = "submit">Submit</button>
 </form>
+<button id = "profile"><a href="/Symptom_List" class = "button">Go Back</a></button>
 </body>
 </Html>

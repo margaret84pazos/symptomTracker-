@@ -6,6 +6,20 @@
     <title></title>
   </head>
 <body>
+  <div class="scene">
+	<div class="circle a"></div>
+	<div class="circle b"></div>
+	<div class="circle c"></div>
+	<div class="circle d"></div>
+	<div class="circle e"></div>
+	<div class="circle f"></div>
+	<div class="circle g"></div>
+	<div class="circle h"></div>
+	<div class="circle i"></div>
+	<div class="circle j"></div>
+</div>
+
+
 <form method="post" action="/Symptom_List">
   <p>
     <h3>New Symptom:</h3>
@@ -15,11 +29,16 @@
   <table style="width:100%">
 
   {% for symptom in symptoms %}
-  <li><a href="/charts?key={{ symptom.key.urlsafe() }}">{{symptom.nameSymp}}</a></li>
+  <li><a id = "Symptom" href="/charts?key={{ symptom.key.urlsafe() }}">{{symptom.nameSymp}}</a></li>
   <br>
   {% endfor %}
 
-  <button id = "submit">Submit</button>
+  <button onclick="submitted()" id = "submit">Submit</button>
+  <script>
+  function submitted() {
+      alert("Add severity level, then look at your charts by clicking your symptom!");
+  }
+  </script>
 
 </form>
 <br>
@@ -28,9 +47,6 @@
 <br>
 <br>
 <button id = "report"><a href="/Report" class = "button">Daily Health Report</a></button><br>
-<br>
-<br>
-<button id = "chart"><a href="/charts" class = "button">Go To Chart</a></button><br>
 <br>
 <br>
 <br>

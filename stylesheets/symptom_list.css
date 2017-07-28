@@ -1,33 +1,62 @@
 body {
-      animation: myfirst 50s; /* animation-name followed by duration in seconds*/
-         /* you could also use milliseconds (ms) or something like 2.5s */
-      -webkit-animation:myfirst 20s infinite;  /* Chrome and Safari */
-    }
-
-    @-webkit-keyframes myfirst /* Safari and Chrome - necessary duplicate */
-    {
-      0% {background: #EBEDEF;}
-      10% {background: #D6DBDF;}
-      20% {background: #AEB6BF;}
-      30% {background: #85929E;}
-      40% {background: #5D6D7E;}
-      50% {background: #34495E;}
-      60% {background: #5D6D7E;}
-      70% {background: #85929E;}
-      80% {background: #AEB6BF;}
-      90% {background: #D6DBDF;}
-      100% {background: #EBEDEF;}
+	background: black;
+}
+.scene {
+	width: 600px;
+	height: 60px;
+	margin: 100px auto;
 }
 
+.circle {
+	width: 60px;
+	height: 60px;
+	border-top-right-radius: 60px;
+	float: left;
+	transform-origin: bottom left;
+}
+
+.a,.c,.e,.g,.i {
+  animation: rotate1 1s ease-in-out alternate infinite;
+}
+
+.b,.d,.f,.h,.j {
+  animation: rotate2 1s ease-in-out alternate infinite;
+  transform: rotate(90deg);
+}
+
+.a {background: #A513BF;}
+.b {background: #A513BF;}
+.c {background: #FF0901;}
+.d {background: #FF0901;}
+.e {background: #0E58D0;}
+.f {background: #0E58D0;}
+.g {background: #FDFF01;}
+.h {background: #FDFF01;}
+.i {background: #2DBF13;}
+.j {background: #2DBF13;}
+
+@keyframes rotate1 {
+	100% {transform: rotate(-360deg);}
+}
+
+@keyframes rotate2 {
+	100% {transform: rotate(450deg);}
+}
 #symp {
   width: 200px; height: 20px; border: 1px solid #999999; padding: 5px;
   font-size: 40%;
 }
 
+.div {
+  text-align: center;
+  font-family: Raleway, Geneva, sans-serif;
+  color: white;
+}
+
 h3{
   text-align: center;
   font-family: Raleway, Geneva, sans-serif;
-  color: black;
+  color: white;
   font-size: 200%;
   font-weight: 900;
   text-shadow: 0 2px 20px white;
@@ -36,7 +65,7 @@ h3{
 li{
   text-align: center;
   font-family: Raleway, Geneva, sans-serif;
-  color: black;
+  color: white;
   font-size: 150%;
   font-weight: 900;
   text-shadow: 0 2px 20px white;
@@ -62,7 +91,7 @@ li{
   position: absolute;
   z-index:-1;
   top: 0;  left: 0;  right: 0;  bottom: 0;
-  background: #979A9A;
+  background: #A513BF;
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform .3s ease-out;
@@ -90,41 +119,13 @@ li{
   position: absolute;
   z-index:-1;
   top: 0;  left: 0;  right: 0;  bottom: 0;
-  background: #979A9A;
+  background: #FF0901;
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform .3s ease-out;
 }
 
 #report:hover:before{transform: scaleX(1);}
-
-#chart{
-  color: black;
-
-  font-family: Raleway, Geneva, sans-serif;
-  font-size: 30px;
-  margin-left: 610px;
-  border: 2px solid black;
-
-  display:inline-block;
-  position: absolute;
-  cursor:pointer;
-  background:white;  color:black;
-  z-index:0;
-}
-
-#chart:before {
-  content: "";
-  position: absolute;
-  z-index:-1;
-  top: 0;  left: 0;  right: 0;  bottom: 0;
-  background: #979A9A;
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  transition: transform .3s ease-out;
-}
-
-#chart:hover:before{transform: scaleX(1);}
 
 #mainPage{
   color: black;
@@ -146,13 +147,18 @@ li{
   position: absolute;
   z-index:-1;
   top: 0;  left: 0;  right: 0;  bottom: 0;
-  background: #979A9A;
+  background: #0E58D0;
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform .3s ease-out;
 }
 
 #mainPage:hover:before{transform: scaleX(1);}
+
 a{
   text-decoration: none;
+  color: black;
+}
+#Symptom{
+  color: white;
 }

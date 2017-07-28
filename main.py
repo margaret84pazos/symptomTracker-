@@ -177,8 +177,8 @@ class ChartHandler(webapp2.RequestHandler):
             template = jinja_environment.get_template("templates/charts.html")
             points = "['Dates', 'Severity'],"
 
-            # symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
-            # symptoms = symptom_query.fetch()
+            #symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
+            #symptoms = symptom_query.fetch()
 
             symptom_key = self.request.get('key')
             symptom = ndb.Key(urlsafe=symptom_key)
