@@ -1,28 +1,12 @@
 body {
-      animation: myfirst 50s; /* animation-name followed by duration in seconds*/
-         /* you could also use milliseconds (ms) or something like 2.5s */
-      -webkit-animation:myfirst 20s infinite;  /* Chrome and Safari */
-    }
-
-    @-webkit-keyframes myfirst /* Safari and Chrome - necessary duplicate */
-    {
-      0% {background: #1F618D;}
-      10% {background: #2980B9;}
-      20% {background: #3498DB;}
-      30% {background: #5DADE2;}
-      40% {background: #5499C7;}
-      50% {background: #2980B9;}
-      60% {background: #2E86C1;}
-      70% {background: #5DADE2;}
-      80% {background: #5499C7;}
-      90% {background: #5499C7;}
-      100% {background: #1F618D;}
+  background-color: black;
+  color: black;
 }
 
 h1 {
   text-align: center;
   font-family: Raleway, Geneva, sans-serif;
-  color: black;
+  color: white;
   font-weight: 900;
   text-shadow: 0 2px 20px grey;
   font-size: 450%;
@@ -31,7 +15,7 @@ h1 {
 h3 {
   text-align: center;
   font-family: Raleway, Geneva, sans-serif;
-  color: black;
+  color: white;
   font-weight: 900;
   text-shadow: 0 2px 20px grey;
   font-size: 200%;
@@ -46,7 +30,7 @@ h3 {
 div {
   text-align: center;
   font-family: Raleway, Geneva, sans-serif;
-  color: black;
+  color: white;
   font-weight: 900;
   text-shadow: 0 2px 20px grey;
   font-size: 200%;
