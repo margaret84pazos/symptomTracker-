@@ -186,7 +186,7 @@ class ChartHandler(webapp2.RequestHandler):
             reports = Report.query().filter(Report.symptom_key == symptom).fetch()
 
             for report in reports:
-                points = points + '[' + '\''   + str(report.time) +  '\',' + str(report.severity) +'],'
+                points = points + '[' + '\''   + str(report.time.strftime('%b %d')) +  '\',' + str(report.severity) +'],'
 
             template_vars = {
             'points': points
