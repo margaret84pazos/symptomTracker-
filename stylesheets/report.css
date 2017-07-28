@@ -9,12 +9,12 @@ div {
   font-size: 200%;
 }
 
-button{
+#submit{
   color: black;
 
   font-family: Raleway, Geneva, sans-serif;
   font-size: 30px;
-  margin-left: 650px;
+  margin-left: 740px;
   border: 2px solid black;
 
   display:inline-block;
@@ -24,7 +24,7 @@ button{
   z-index:0;
 }
 
-button:before {
+#submit:before {
   content: "";
   position: absolute;
   z-index:-1;
@@ -35,4 +35,37 @@ button:before {
   transition: transform .3s ease-out;
 }
 
-button:hover:before{transform: scaleX(1);}
+#submit:hover:before{transform: scaleX(1);}
+
+#profile{
+  color: black;
+
+  font-family: Raleway, Geneva, sans-serif;
+  font-size: 30px;
+  margin-left: 550px;
+  border: 2px solid black;
+
+  display:inline-block;
+  position: absolute;
+  cursor:pointer;
+  background:white;  color:black;
+  z-index:0;
+}
+
+#profile:before {
+  content: "";
+  position: absolute;
+  z-index:-1;
+  top: 0;  left: 0;  right: 0;  bottom: 0;
+  background: #2DBF13;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .3s ease-out;
+}
+
+#profile:hover:before{transform: scaleX(1);}
+
+a{
+  text-decoration: none;
+  color: black;
+}
