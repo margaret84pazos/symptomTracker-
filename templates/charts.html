@@ -11,11 +11,7 @@
           //for getting info from a table use self.request()?
           //need a way to append the array when new reports or symptoms are added
 
-          ['Date', 'Backpain'],
-          ['2004',  6],
-          ['2005',  8],
-          ['2006',  2],
-          ['2007',  0]
+          {{points}}
         ]);
 
         var options = {
@@ -32,6 +28,7 @@
   </head>
   <body>
     {{points}}
+  
     <div id="curve_chart" style="width: 900px; height: 500px"></div>
   </body>
 </html>

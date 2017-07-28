@@ -175,20 +175,26 @@ class ReportHandler(webapp2.RequestHandler):
 class ChartHandler(webapp2.RequestHandler):
     def get(self):
             template = jinja_environment.get_template("templates/charts.html")
-            points = "['Dates,' 'Severity']"
+            points = "['Dates', 'Severity'],"
+
+            # symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
+            # symptoms = symptom_query.fetch()
+
+            symptom_key = self.request.get('key')
+            symptom = ndb.Key(urlsafe=symptom_key)
+
+            reports = Report.query().filter(Report.symptom_key == symptom).fetch()
+
+            for report in reports:
+                points = points + '[' + '\''   + str(report.time) +  '\',' + str(report.severity) +'],'
+
             template_vars = {
             'points': points
             }
 
             self.response.write(template.render(template_vars))
-        # symptom_query = Symptom.query(Symptom.profile_key == profile.key).order(-Symptom.postTime)
-        # symptoms = symptom_query.fetch()
-        #
-        # symptom_key = self.request.get('key')
-        # symptom = ndb.Key(urlsafe=symptom_key)
-        #
-        # reports = Report.query().filter(Report.symptom_key == symptom_key)
-        #
+
+
         # template_vars = {
         #     'symptom_key'=symptom_key,
         #     'profile_key'= profile_key,
