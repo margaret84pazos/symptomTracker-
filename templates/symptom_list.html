@@ -15,7 +15,7 @@
   <table style="width:100%">
 
   {% for symptom in symptoms %}
-  <li><a href="/charts?key={{ symptom.key.urlsafe() }}">{{symptom.nameSymp}}</a></li>
+  <li><a id = "Symptom" href="/charts?key={{ symptom.key.urlsafe() }}">{{symptom.nameSymp}}</a></li>
   <br>
   {% endfor %}
 
@@ -28,9 +28,6 @@
 <br>
 <br>
 <button id = "report"><a href="/Report" class = "button">Daily Health Report</a></button><br>
-<br>
-<br>
-<button id = "chart"><a href="/charts" class = "button">Go To Chart</a></button><br>
 <br>
 <br>
 <br>

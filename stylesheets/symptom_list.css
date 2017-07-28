@@ -1,22 +1,6 @@
 body {
-      animation: myfirst 50s; /* animation-name followed by duration in seconds*/
-         /* you could also use milliseconds (ms) or something like 2.5s */
-      -webkit-animation:myfirst 20s infinite;  /* Chrome and Safari */
-    }
-
-    @-webkit-keyframes myfirst /* Safari and Chrome - necessary duplicate */
-    {
-      0% {background: #EBEDEF;}
-      10% {background: #D6DBDF;}
-      20% {background: #AEB6BF;}
-      30% {background: #85929E;}
-      40% {background: #5D6D7E;}
-      50% {background: #34495E;}
-      60% {background: #5D6D7E;}
-      70% {background: #85929E;}
-      80% {background: #AEB6BF;}
-      90% {background: #D6DBDF;}
-      100% {background: #EBEDEF;}
+  background-color: black;
+  color: black;
 }
 
 #symp {
@@ -27,7 +11,7 @@ body {
 h3{
   text-align: center;
   font-family: Raleway, Geneva, sans-serif;
-  color: black;
+  color: white;
   font-size: 200%;
   font-weight: 900;
   text-shadow: 0 2px 20px white;
@@ -36,7 +20,7 @@ h3{
 li{
   text-align: center;
   font-family: Raleway, Geneva, sans-serif;
-  color: black;
+  color: white;
   font-size: 150%;
   font-weight: 900;
   text-shadow: 0 2px 20px white;
@@ -62,7 +46,7 @@ li{
   position: absolute;
   z-index:-1;
   top: 0;  left: 0;  right: 0;  bottom: 0;
-  background: #979A9A;
+  background: #A513BF;
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform .3s ease-out;
@@ -90,7 +74,7 @@ li{
   position: absolute;
   z-index:-1;
   top: 0;  left: 0;  right: 0;  bottom: 0;
-  background: #979A9A;
+  background: #FF0901;
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform .3s ease-out;
@@ -118,7 +102,7 @@ li{
   position: absolute;
   z-index:-1;
   top: 0;  left: 0;  right: 0;  bottom: 0;
-  background: #979A9A;
+  background: #0E58D0;
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform .3s ease-out;
@@ -146,7 +130,7 @@ li{
   position: absolute;
   z-index:-1;
   top: 0;  left: 0;  right: 0;  bottom: 0;
-  background: #979A9A;
+  background: #2DBF13;
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform .3s ease-out;
@@ -155,4 +139,8 @@ li{
 #mainPage:hover:before{transform: scaleX(1);}
 a{
   text-decoration: none;
+  color: black;
+}
+#Symptom{
+  color: white;
 }
