@@ -6,6 +6,8 @@
     <title></title>
   </head>
 <body>
+
+
 <form method="post" action="/Symptom_List">
   <p>
     <h3>New Symptom:</h3>
@@ -19,7 +21,12 @@
   <br>
   {% endfor %}
 
-  <button id = "submit">Submit</button>
+  <button onclick="submitted()" id = "submit">Submit</button>
+  <script>
+  function submitted() {
+      alert("Click on the symptom to see its chart!");
+  }
+  </script>
 
 </form>
 <br>
